@@ -21,6 +21,7 @@ public class EditPersonDescriptorTest {
         // same values -> returns true
         EditPersonDescriptor descriptorWithSameValues = new EditPersonDescriptor(DESC_AMY);
         assertTrue(DESC_AMY.equals(descriptorWithSameValues));
+        System.out.println("1");
 
         // same object -> returns true
         assertTrue(DESC_AMY.equals(DESC_AMY));
@@ -44,10 +45,6 @@ public class EditPersonDescriptorTest {
 
         // different email -> returns false
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
-
-        // different address -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different tags -> returns false
