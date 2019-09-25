@@ -27,7 +27,7 @@ public class AlfredStorageManager implements AlfredStorage {
     public AlfredStorageManager(ParticipantListStorage pStore,
                                 MentorListStorage mStore,
                                 IssueListStorage iStore,
-                                TeamListStorage tStore
+                                TeamListStorage tStore,
                                 UserPrefsStorage userPrefsStorage) {
         super();
         this.pStore = pStore;
@@ -53,34 +53,116 @@ public class AlfredStorageManager implements AlfredStorage {
         userPrefsStorage.saveUserPrefs(userPrefs);
     }
 
-
-    // ================ AddressBook methods ==============================
-
+    // ================ ParticipantList methods ==============================
     @Override
-    public Path getAddressBookFilePath() {
-        return addressBookStorage.getAddressBookFilePath();
+    public Path getParticipantListFilePath() {
+        return pStore.getParticipantListFilePath();
     }
 
     @Override
-    public Optional<ReadOnlyAddressBook> readAddressBook() throws DataConversionException, IOException {
-        return readAddressBook(addressBookStorage.getAddressBookFilePath());
+    public Optional<ParticipantList> readParticipantList() throws DataConversionException, IOException {
+        return readParticipantList(pStore.getParticipantListFilePath());
     }
 
     @Override
-    public Optional<ReadOnlyAddressBook> readAddressBook(Path filePath) throws DataConversionException, IOException {
+    public Optional<ParticipantList> readParticipantList(Path filePath) throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return addressBookStorage.readAddressBook(filePath);
+        return pStore.readParticipantList(filePath);
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyAddressBook addressBook) throws IOException {
-        saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath());
+    public void saveParticipantList(ParticipantList pList) throws IOException {
+        saveParticipantList(pList, pStore.getParticipantListFilePath());
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
+    public void saveParticipantList(ParticipantList pList, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        addressBookStorage.saveAddressBook(addressBook, filePath);
+        pStore.saveParticipantList(pList, filePath);
+    }
+
+    // ================ MentorList methods ==============================
+    @Override
+    public Path getMentorListFilePath() {
+        return mStore.getMentorListFilePath();
+    }
+
+    @Override
+    public Optional<MentorList> readMentorList() throws DataConversionException, IOException {
+        return readMentorList(mStore.getMentorListFilePath());
+    }
+
+    @Override
+    public Optional<MentorList> readMentorList(Path filePath) throws DataConversionException, IOException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return mStore.readMentorList(filePath);
+    }
+
+    @Override
+    public void saveMentorList(MentorList mList) throws IOException {
+        saveMentorList(mList, mStore.getMentorListFilePath());
+    }
+
+    @Override
+    public void saveMentorList(MentorList mList, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        mStore.saveMentorList(mList, filePath);
+    }
+
+    // ================ IssueList methods ==============================
+    @Override
+    public Path getIssueListFilePath() {
+        return iStore.getIssueListFilePath();
+    }
+
+    @Override
+    public Optional<IssueList> readIssueList() throws DataConversionException, IOException {
+        return readIssueList(iStore.getIssueListFilePath());
+    }
+
+    @Override
+    public Optional<IssueList> readIssueList(Path filePath) throws DataConversionException, IOException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return iStore.readIssueList(filePath);
+    }
+
+    @Override
+    public void saveIssueList(IssueList iList) throws IOException {
+        saveIssueList(iList, iStore.getIssueListFilePath());
+    }
+
+    @Override
+    public void saveIssueList(IssueList iList, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        iStore.saveIssueList(iList, filePath);
+    }
+
+    // ================ TeamList methods ==============================
+    @Override
+    public Path getTeamListFilePath() {
+        return tStore.getTeamListFilePath();
+    }
+
+    @Override
+    public Optional<TeamList> readTeamList() throws DataConversionException, IOException {
+        return readTeamList(tStore.getTeamListFilePath());
+    }
+
+    @Override
+    public Optional<TeamList> readTeamList(Path filePath) throws DataConversionException, IOException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return tStore.readTeamList(filePath);
+    }
+
+    @Override
+    public void saveTeamList(TeamList tList) throws IOException {
+        saveTeamList(tList, tStore.getTeamListFilePath());
+    }
+
+    @Override
+    public void saveTeamList(TeamList tList, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        tStore.saveTeamList(tList, filePath);
     }
 
 }

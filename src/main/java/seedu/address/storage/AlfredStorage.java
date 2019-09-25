@@ -29,38 +29,38 @@ public interface AlfredStorage extends UserPrefsStorage, TeamListStorage,
     Path getTeamListFilePath();
 
     @Override
-    Optional<ReadOnlyTeamList> readTeamList() throws DataConversionException, IOException;
+    Optional<TeamList> readTeamList() throws DataConversionException, IOException;
 
     @Override
-    void saveTeamList(ReadOnlyTeamList teamList) throws IOException;
+    void saveTeamList(TeamList teamList) throws IOException;
 
     //=========================== ParticipantList ===========================
     @Override
     Path getParticipantListFilePath();
 
     @Override
-    Optional<ReadOnlyParticipantList> readParticipantList() throws DataConversionException, IOException;
+    Optional<ParticipantList> readParticipantList() throws DataConversionException, IOException;
 
     @Override
-    void saveParticipantList(ReadOnlyParticipantList participantList) throws IOException;
+    void saveParticipantList(ParticipantList participantList) throws IOException;
 
     //=========================== IssueList ===========================
     @Override
     Path getIssueListFilePath();
 
     @Override
-    Optional<ReadOnlyIssueList> readIssueList() throws DataConversionException, IOException;
+    Optional<IssueList> readIssueList() throws DataConversionException, IOException;
 
     @Override
-    void saveIssueList(ReadOnlyIssueList issueList) throws IOException;
+    void saveIssueList(IssueList issueList) throws IOException;
 
     //=========================== MentorList ===========================
     @Override
     Path getMentorListFilePath();
 
     @Override
-    Optional<ReadOnlyMentorList> readMentorList() throws DataConversionException, IOException;
+    Optional<MentorList> readMentorList() throws DataConversionException, IOException;
 
     @Override
-    void saveMentorList(ReadOnlyMentorList mentorList) throws IOException;
+    void saveMentorList(MentorList mentorList) throws IOException;
 }
