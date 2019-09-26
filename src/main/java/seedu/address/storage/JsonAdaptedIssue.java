@@ -74,12 +74,12 @@ class JsonAdaptedIssue {
         final Name modelName = new Name(name);
 
         if (description == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Description");
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Description"));
         }
         final String modelDescription = description;
 
         if (isCompleted == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "IsCompleted");
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "IsCompleted"));
         }
         final String modelIsCompleted = isCompleted;
 
