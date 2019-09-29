@@ -15,11 +15,10 @@ public class Participant extends Entity {
      * @param phone
      * @param id
      */
-    public Participant(Name name, Email email, Phone phone, Id id) {
+    public Participant(Name name, Id id, Email email, Phone phone) {
         super(id, name);
         this.email = email;
         this.phone = phone;
-        // TODO: Make this case impossible? because participants cannot exist w/o team
     }
 
     // Getters - Note the return types will be changed from phone and email to the respective types - Just for demo
@@ -50,7 +49,7 @@ public class Participant extends Entity {
      * @param phone
      */
     public void setPhone(Phone phone) {
-        this.phone = phone;
+       this.phone = phone;
     }
 
     /**
@@ -67,7 +66,6 @@ public class Participant extends Entity {
         HashMap<String, String> result = new HashMap<>();
         result.put("name", getName().toString());
         result.put("phone", getPhone().toString());
-        result.put("team", getTeam().toString());
         return result;
     }
 

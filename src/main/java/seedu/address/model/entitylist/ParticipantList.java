@@ -2,73 +2,97 @@ package seedu.address.model.entitylist;
 
 import java.util.ArrayList;
 import java.util.List;
-import seedu.address.model.entity.Email;
+import seedu.address.AlfredException;
+import seedu.address.AlfredRuntimeException;
 import seedu.address.model.entity.Entity;
 import seedu.address.model.entity.Id;
-import seedu.address.model.entity.Name;
 import seedu.address.model.entity.Participant;
-import seedu.address.model.entity.Phone;
 import seedu.address.model.entity.PrefixType;
 
 public class ParticipantList extends EntityList {
     private List<Participant> participants;
+    private int lastUsedId;
 
     /**
      * Constructor.
      */
     public ParticipantList() {
-        this.participants = new ArrayList<>();
+       this.participants = new ArrayList<>();
+       this.lastUsedId = 0;
     }
 
     /**
      * Gets participant by id.
      *
      * @param id
-     * @return
+     * @return Participant
+     * @throws AlfredException if the participant to get does not exist.
      */
-    @Override
-    public Participant get(Id id) {
-        return new Participant(new Name("name"), new Email("email"), new Phone("999"), this.generateID());
+    public Participant get(Id id) throws AlfredException {
+        for (Participant p: this.participants) {
+            if (p.getId() == id) {
+                return p;
+            }
+        }
+        throw new AlfredRuntimeException("Participant to get does not exist");
     }
 
     /**
      * Updates participant by id.
      *
-     * @param participant
-     * @throws Exception if error while updating.
+     * @param id
+     * @param updatedParticipant
+     * @return boolean
      */
-    @Override
-    public void update(Entity participant) throws Exception {
-        // TODO: Find by ID then replace.
-        participants.add((Participant) participant);
+    public boolean update(Id id, Participant updatedParticipant) {
+        for (int i = 0; i < this.participants.size(); i++) {
+            if (this.participants.get(i).getId() == id) {
+                this.participants.set(i, updatedParticipant);
+                return true;
+            }
+        }
+        // Participant to update does not exist
+        return false;
     }
 
     /**
      * Adds participant to the list.
      *
      * @param participant
-     * @throws Exception if there was an error while adding.
+     * @throws AlfredException if there was an error while adding.
      */
-    @Override
-    public void add(Entity participant) throws Exception {
-        // TODO: Find by ID then replace.
-        participants.add((Participant) participant);
+    public void add(Participant participant) throws AlfredException {
+        for (Participant p: this.participants) {
+            if (p.getId() == participant.getId()) {
+                throw new AlfredRuntimeException("Participant already exists in list");
+            }
+        }
+        this.participants.add(participant);
     }
 
     /**
      * Deletes participant by ID.
      *
      * @param id
-     * @throws Exception if error while deleting.
+     * @throws AlfredException if error while deleting.
      */
-    @Override
-    public void delete(Id id) throws Exception {
+    public Participant delete(Id id) throws AlfredException {
         for (Participant p: this.participants) {
             if (p.getId() == id) {
                 this.participants.remove(p);
-                return;
+                return p;
             }
         }
+        throw new AlfredRuntimeException("Participant to delete does not exist");
+    }
+
+    /**
+     * Gets the list but with element type Participant.
+     *
+     * @return List<Participant>
+     */
+    public List<Participant> getSpecificTypedList() {
+        return this.participants;
     }
 
     /**
@@ -88,7 +112,7 @@ public class ParticipantList extends EntityList {
      * @return boolean
      */
     @Override
-    public boolean isContain(Id id) {
+    public boolean contains(Id id) {
         for (Participant p: this.participants) {
             if (p.getId() == id) {
                 return true;
@@ -104,6 +128,7 @@ public class ParticipantList extends EntityList {
      */
     @Override
     public Id generateID() {
-        return new Id(PrefixType.P, this.getNewIDSuffix());
+        this.lastUsedId++;
+        return new Id(PrefixType.P, this.lastUsedId);
     }
 }
