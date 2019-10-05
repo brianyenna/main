@@ -14,7 +14,6 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.entitylist.ParticipantList;
 import seedu.address.model.entitylist.MentorList;
 import seedu.address.model.entitylist.TeamList;
-import seedu.address.model.entitylist.IssueList;
 
 /**
  * Manages storage of Entity (Participant, Mentor, Issue, Team) and UserPref data in local storage.

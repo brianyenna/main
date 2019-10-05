@@ -1,11 +1,18 @@
 package seedu.address.testutil;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import seedu.address.model.AddressBook;
 import seedu.address.model.entity.Email;
 import seedu.address.model.entity.Id;
+import seedu.address.model.entity.Mentor;
 import seedu.address.model.entity.Name;
 import seedu.address.model.entity.Phone;
 import seedu.address.model.entity.PrefixType;
 import seedu.address.model.entity.SubjectName;
+import seedu.address.model.person.Person;
 
 public class TypicalMentors {
     public static final Mentor A = new Mentor(new Name("Mentor A"),
@@ -13,24 +20,36 @@ public class TypicalMentors {
                                               new Phone("91111111"),
                                               new Email("mentorA@gmail.com"),
                                               new Name("Organization A"),
-                                              new SubjectName);
+                                              SubjectName.SOCIAL);
 
-    public Mentor(
-            Name name,
-            Id id,
-            Phone phone,
-            Email email,
-            Name organization,
-            SubjectName subject
-    )
-    public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
-            .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
-            .withPhone("94351253")
-            .withTags("friends").build();
-    public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
-            .withAddress("311, Clementi Ave 2, #02-25")
-            .withEmail("johnd@example.com").withPhone("98765432")
-            .withTags("owesMoney", "friends").build();
-    public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
-            .withEmail("heinz@example.com").withAddress("wall street").build();
+    public static final Mentor B = new Mentor(new Name("Mentor B"),
+                                              new Id(PrefixType.M, 31)
+                                              new Phone("92222222"),
+                                              new Email("mentorB@gmail.com"),
+                                              new Name("Organization B"),
+                                              SubjectName.EDUCATION);
+    public static final Mentor C = new Mentor(new Name("Mentor C"),
+                                              new Id(PrefixType.M, 33)
+                                              new Phone("93333333"),
+                                              new Email("mentorC@gmail.com"),
+                                              new Name("Organization C"),
+                                              SubjectName.ENVIRONMENTAL);
+
+    public static MentorList getTypicalMentorList() {
+        
+    }
+    /**
+     * Returns an {@code AddressBook} with all the typical persons.
+     */
+    public static AddressBook getTypicalAddressBook() {
+        AddressBook ab = new AddressBook();
+        for (Person person : getTypicalPersons()) {
+            ab.addPerson(person);
+        }
+        return ab;
+    }
+
+    public static List<Person> getTypicalPersons() {
+        return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
+    }
 }
