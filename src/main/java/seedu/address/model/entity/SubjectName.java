@@ -4,7 +4,10 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public enum SubjectName {
-    PLACEHOLDER("placeholder");
+    ENVIRONMENTAL("Environmental"),
+    SOCIAL("Social"),
+    HEALTH("Health"),
+    EDUCATION("Education");
 
 
     private static final String SPECIAL_CHARACTERS = "-'";

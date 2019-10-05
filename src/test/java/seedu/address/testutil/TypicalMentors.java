@@ -4,6 +4,7 @@ import seedu.address.model.entity.Email;
 import seedu.address.model.entity.Id;
 import seedu.address.model.entity.Name;
 import seedu.address.model.entity.Phone;
+import seedu.address.model.entity.PrefixType;
 import seedu.address.model.entity.SubjectName;
 
 public class TypicalMentors {

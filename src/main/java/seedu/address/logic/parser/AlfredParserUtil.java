@@ -113,7 +113,7 @@ public class AlfredParserUtil {
         if (!SubjectName.isValidSubjectName(trimmedSubject)) {
             throw new ParseException(SubjectName.MESSAGE_CONSTRAINTS);
         }
-        return SubjectName.PLACEHOLDER;
+        return SubjectName.SOCIAL;
     }
 
 
