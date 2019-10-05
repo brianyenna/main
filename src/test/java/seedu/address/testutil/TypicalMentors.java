@@ -16,20 +16,20 @@ import seedu.address.model.person.Person;
 
 public class TypicalMentors {
     public static final Mentor A = new Mentor(new Name("Mentor A"),
-                                              new Id(PrefixType.M, 3)
+                                              new Id(PrefixType.M, 3),
                                               new Phone("91111111"),
                                               new Email("mentorA@gmail.com"),
                                               new Name("Organization A"),
                                               SubjectName.SOCIAL);
 
     public static final Mentor B = new Mentor(new Name("Mentor B"),
-                                              new Id(PrefixType.M, 31)
+                                              new Id(PrefixType.M, 31),
                                               new Phone("92222222"),
                                               new Email("mentorB@gmail.com"),
                                               new Name("Organization B"),
                                               SubjectName.EDUCATION);
     public static final Mentor C = new Mentor(new Name("Mentor C"),
-                                              new Id(PrefixType.M, 33)
+                                              new Id(PrefixType.M, 33),
                                               new Phone("93333333"),
                                               new Email("mentorC@gmail.com"),
                                               new Name("Organization C"),

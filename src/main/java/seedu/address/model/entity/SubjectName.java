@@ -12,8 +12,6 @@ public enum SubjectName {
     HEALTH("Health"),
     EDUCATION("Education");
 
-    PLACEHOLDER("placeholder");
-
     private static final String SPECIAL_CHARACTERS = "-'";
 
     public static final String MESSAGE_CONSTRAINTS =
