@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
 import seedu.address.model.entity.Email;
 import seedu.address.model.entity.Id;
 import seedu.address.model.entity.Mentor;
@@ -12,7 +11,7 @@ import seedu.address.model.entity.Name;
 import seedu.address.model.entity.Phone;
 import seedu.address.model.entity.PrefixType;
 import seedu.address.model.entity.SubjectName;
-import seedu.address.model.person.Person;
+import seedu.address.model.entitylist.MentorList;
 
 public class TypicalMentors {
     public static final Mentor A = new Mentor(new Name("Mentor A"),
@@ -35,7 +34,15 @@ public class TypicalMentors {
                                               new Name("Organization C"),
                                               SubjectName.ENVIRONMENTAL);
 
-    //public static MentorList getTypicalMentorList() {
-    //
-    //}
+    public static MentorList getTypicalMentorList() {
+        MentorList mList = new MentorList();
+        for (Mentor m : getTypicalMentors()) {
+            mList.add(m);
+        }
+        return mList;
+    }
+
+    public static List<Mentor> getTypicalMentors() {
+        return new ArrayList<>(Arrays.asList(A, B, C));
+    }
 }
